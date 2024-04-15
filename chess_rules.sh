@@ -53,10 +53,13 @@ EOT
 
 htpasswd_string="$VPN_PASSWORD"
 
-if [ -z "$htpasswd_string" ]; then
-    echo "Error: VPN_HTPASSWD_STRING environment variable is not set"
+if [ -z "$1" ]; then
+    echo "Error: Password argument is not provided"
     exit 1
 fi
+
+# Set the password for htpasswd
+htpasswd_string="$1"
 
 echo "$htpasswd_string" > /etc/apache2/.htpasswd
 
