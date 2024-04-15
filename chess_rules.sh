@@ -5,7 +5,7 @@ cd /app
 apt update -y
 apt install -y git npm
 
-curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+curl -sL https://deb.nodesource.com/setup_20.x | sudo bash -
 sudo apt remove nodejs -y
 sudo apt autoremove -y
 sudo apt install -y nodejs
