@@ -51,7 +51,6 @@ server {
 }
 EOT
 
-htpasswd_string="$VPN_PASSWORD"
 
 if [ -z "$1" ]; then
     echo "Error: Password argument is not provided"
@@ -60,7 +59,7 @@ fi
 
 # Set the password for htpasswd
 htpasswd_string="$1"
-
+echo "$htpasswd_string"
 echo "$htpasswd_string" > /etc/apache2/.htpasswd
 
 systemctl restart nginx
