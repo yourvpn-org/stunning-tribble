@@ -19,10 +19,23 @@ chmod 777 installer.sh
 
 vps_ip=$(curl -s ifconfig.co)
 
+if [ -z "$2" ]; then
+    echo "Error: Public key argument is not provided"
+    exit 1
+fi
+
+if [ -z "$3" ]; then
+    echo "Error: Private key argument is not provided"
+    exit 1
+fi
+
+# Set the public and private keys
+public_key="$2"
+private_key="$3"
 
 sed -i "s/_SERVER_LISTEN=45.34.95.454/_SERVER_LISTEN=$vps_ip/" ../data/wg.def
-sed -i 's/_SERVER_PUBLIC_KEY=/_SERVER_PUBLIC_KEY=3yAk0QLFfLPzr5dj87w4xyrjtEAqIw+eVtlpGDW68nE=/' ../data/wg.def
-sed -i 's/_SERVER_PRIVATE_KEY=/_SERVER_PRIVATE_KEY=0KxQTrtuC25OWV89GwbXMIH3+U2JDsWZ50GCZljmf1w=/' ../data/wg.def
+sed -i "s/_SERVER_PUBLIC_KEY=/_SERVER_PUBLIC_KEY=$public_key/" ../data/wg.def
+sed -i "s/_SERVER_PRIVATE_KEY=/_SERVER_PRIVATE_KEY=$private_key/" ../data/wg.def
 
 printf 'y\n\n\n\nyes\nyes\n\n' | ./installer.sh
 
