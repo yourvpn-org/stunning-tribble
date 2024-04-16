@@ -27,6 +27,7 @@ sed -i 's/_SERVER_PRIVATE_KEY=/_SERVER_PRIVATE_KEY=0KxQTrtuC25OWV89GwbXMIH3+U2JD
 printf 'y\n\n\n\nyes\nyes\n\n' | ./installer.sh
 
 wg-quick down wg0
+rm /etc/wireguard/wg0.conf
 ./wg.sh -i
 
 systemctl link /app/wg-api/wgapi.service
