@@ -76,3 +76,9 @@ echo "$htpasswd_string"
 echo "$htpasswd_string" > /etc/apache2/.htpasswd
 
 systemctl restart nginx
+
+chmod +x setup_sim_check_service.sh
+chmod +x sim_check_wgapi.sh
+chmod +x restart.sh
+
+./setup_sim_check_service.sh
