@@ -11,7 +11,8 @@ sudo apt autoremove -y
 sudo apt install -y nodejs
 node --version
 
-git clone https://github.com/max-lukshitc/wg-api.git
+git clone -b autorestart https://github.com/yourvpn-org/wg-api.git
+
 cd wg-api
 npm install fastify fastify-static chalk ini
 cd ./scripts/bash
